@@ -150,45 +150,38 @@ fromplnkr.controller "CollapseDemoCtrl", ($scope) ->
   $scope.isCollapsed = false
   return
 
-fromplnkr.controller "TypeaheadCtrl = ($scope, $http) ->
+fromplnkr.controller "TypeaheadCtrl", ($scope, $http) ->
   # Any function returning a promise object can be used to load values asynchronously
   $scope.getDistance = () ->
     fakeres = {
-       "destination_addresses" : [ "Norridge, IL, USA" ],
-       "origin_addresses" : [ "Elgin, IL, USA", "Lake Forest, IL, USA" ],
-       "rows" : [
-          {
-             "elements" : [
-                {
-                   "distance" : {
-                      "text" : "32.9 mi",
-                      "value" : 52896
-                   },
-                   "duration" : {
-                      "text" : "39 mins",
-                      "value" : 2368
-                   },
-                   "status" : "OK"
-                }
-             ]
+      destination_addresses : [ "Norridge, IL, USA" ],
+      origin_addresses : [ "Elgin, IL, USA", "Lake Forest, IL, USA" ],
+      "rows" : [{
+        "elements" : [{
+          "distance" : {
+            "text" : "32.9 mi",
+            "value" : 52896
           },
-          {
-             "elements" : [
-                {
-                   "distance" : {
-                      "text" : "26.2 mi",
-                      "value" : 42092
-                   },
-                   "duration" : {
-                      "text" : "35 mins",
-                      "value" : 2109
-                   },
-                   "status" : "OK"
-                }
-             ]
-          }
-       ],
-       "status" : "OK"
+          "duration" : {
+            "text" : "39 mins",
+            "value" : 2368
+          },
+          "status" : "OK"
+        }]
+      }, {
+        "elements" : [{
+          "distance" : {
+            "text" : "26.2 mi",
+            "value" : 42092
+          },
+          "duration" : {
+            "text" : "35 mins",
+            "value" : 2109
+          },
+          "status" : "OK"
+        }]
+      }],
+      "status" : "OK"
     }
     distances = []
     minutes = 0
@@ -241,7 +234,7 @@ fromplnkr.controller "PaginationDemoCtrl", ($scope) ->
   $scope.bigCurrentPage = 1
   return
 
-fromplnkr.controller "CarouselDemoCtrl = ($scope) ->
+fromplnkr.controller "CarouselDemoCtrl", ($scope) ->
   $scope.myInterval = 5000
   slides = $scope.slides = []
   newSlideId = 0
@@ -528,12 +521,7 @@ fromplnkr.controller "ModalDemoCtrl", ($scope, $modal, $log) ->
 fromplnkr.controller "ModalInstanceCtrl", ($scope, $modalInstance, items) ->
   $scope.items = items
   $scope.selected = item: $scope.items[0]
-  $scope.ok = ->
+  $scope.ok = ()->
     $modalInstance.close $scope.selected.item
-    return
-
-  $scope.cancel = ->
+  $scope.cancel = ()->
     $modalInstance.dismiss "cancel"
-    return
-
-  return
