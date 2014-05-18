@@ -1,0 +1,46 @@
+.row
+  // slider rotates thru 3 types with button wrench "edit"
+  div(ng-controller='CarouselDemoCtrl')
+    div(style='height: 345px;')
+      carousel(interval='myInterval')
+        slide(ng-repeat='slide in slides', active='slide.active')
+          img(ng-src='{{slide.image}}', style='margin: auto;')
+          .carousel-caption
+            //
+               <h4>Slide {{$index}}</h4> 
+            p {{slide.text}}
+          button.btn.btn-info(type='button', ng-click='')
+            span.glyphicon.glyphicon-wrench
+          button.btn.btn-success(type='button', ng-click='addSlide($index)')
+            span.glyphicon.glyphicon-thumbs-up
+          button.btn.btn-danger(type='button', ng-click='removeSlide($index)')
+            span.glyphicon.glyphicon-thumbs-down
+          
+            
+.row
+  div(ng-controller='RatingDemoCtrl')
+    h4 Reviews
+    blockquote
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+      footer
+        rating(ng-model='rate', max='5', readonly='true')
+        |John Smith from
+        cite(title="reddit.com") Reddit
+    blockquote.blockquote-reverse
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+      footer
+        rating(ng-model='rate', max='5', readonly='true')
+        |John Smith from
+        cite(title="reddit.com") Reddit
+    .row
+      div(ng-controller="CollapseDemoCtrl")
+        button.btn.btn-info(ng-click="isCollapsed = !isCollapsed") Load more reviews
+        div(collapse="!isCollapsed")
+          blockquote
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+            footer
+              rating(ng-model='rate', max='5', readonly='true')
+              |John Smith from
+              cite(title="reddit.com") Reddit
+      
+

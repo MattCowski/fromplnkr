@@ -1,0 +1,90 @@
+// TODO picture uploader
+// TODO keyword sets location, phone. from url?
+
+
+// TODO show on navbar "calendar" selection
+div(ng-controller="adminCtrl")
+    h3 Calendar date availability
+    
+    
+    h5 1) select day
+    
+    // TODO ("busy" will disable date in calculator for users)
+    div(ng-controller='DatepickerDemoCtrl')
+    
+      div(style='display:inline-block; min-height:290px;')
+        datepicker.well.well-sm(ng-model='dt', date-disabled="dateDisabled(date, mode)", min-date='minDate', show-weeks='true')
+    
+    h5 2) choose "busy" or "open"
+      div.row
+        div.col-md-6
+          label Availability:
+          select.form-control(ng-model='availability', ng-change="availabilityChange()" ng-options='f for f in ["busy","open"]')
+            option
+      pre {{dt | date:'MM/dd/yy' }} is {{availability}}
+    
+      div.row
+        // TODO how much $ discounted per day? week? month?  
+        h3 Day charge amount
+        div.col-md-6
+          p.input-group
+            label.control-label start of range:
+          p.input-group
+            input.form-control.col-md-4(type='text', datepicker-popup='{{format}}', ng-model='startDate', is-open='startOpened', min-date='minDate', max-date='"2015-06-22"', datepicker-options='dateOptions',  ng-required='true', close-text='Close')
+            span.input-group-btn
+              button.btn.btn-default(type='button', ng-click="open($event, 'startOpened')")
+                i.glyphicon.glyphicon-calendar
+          
+          p.input-group
+            label.control-label end of range:
+          p.input-group
+            input.form-control(type='text', datepicker-popup='{{format}}', ng-model='endDate', is-open='endOpened', min-date='minDate', max-date='"2015-06-22"', datepicker-options='dateOptions', ng-required='true', close-text='Close')
+            span.input-group-btn
+              button.btn.btn-default(type='button', ng-click="open($event, 'endOpened')")
+                i.glyphicon.glyphicon-calendar
+      hr
+      button.btn.btn-sm.btn-info(type='button', ng-click='today()') Today
+      // button.btn.btn-sm.btn-default(type='button', ng-click='dt = "2009-08-24"') 2009-08-24
+      // button.btn.btn-sm.btn-danger(type='button', ng-click='clear()') Clear
+      // button.btn.btn-sm.btn-default(type='button', ng-click='toggleMin()', tooltip='After today restriction') Min date
+
+    
+    h3 Trip charge amount
+    
+    
+    
+    
+    
+    // h3 Locations
+    // pre.
+    //   {{loc}}      
+    // .btn-group
+    //   label.btn.btn-primary(ng-model='loc.left', btn-checkbox='btn-checkbox') chicago
+    //   label.btn.btn-primary(ng-model='loc.middle', btn-checkbox='btn-checkbox') near elgin
+    //   label.btn.btn-primary(ng-model='loc.middle2', btn-checkbox='btn-checkbox') north side
+    //   label.btn.btn-primary(ng-model='loc.right', btn-checkbox='btn-checkbox') new jersey
+
+    // h3 Sealer
+    // p
+    //   {{radioModel.name}} : ${{radioModel.price}} per {{size}} SF = 
+    // .btn-group
+    //   button.btn.btn-primary(type='button', ng-model='radioModel', btn-radio='{name:"1 coat", price:2}') 1 coat
+    //   button.btn.btn-primary(type='button', ng-model='radioModel', btn-radio='{name:"2 coats", price:4}') 2 coats
+    //   button.btn.btn-primary(type='button', ng-model='radioModel', btn-radio='{name:"glossy finish", price:4}') glossy finish
+      
+    // h3 location settings
+    // p
+    //   {{radioTile.name}} : ${{radioTile.price}} per {{size}} SF = 
+    // .btn-group
+    //   button.btn.btn-primary(type='button', ng-model='radioTile', btn-radio='{name:"travertine", price:2}') travertine
+    //   button.btn.btn-primary(type='button', ng-model='radioTile', btn-radio='{name:"glass", price:4}') glass
+    //   button.btn.btn-primary(type='button', ng-model='radioTile', btn-radio='{name:"ceramic", price:4}') ceramic
+    // .btn-group
+    //   label.btn.btn-success(ng-model='loca', btn-radio='{area:"chicago", num:+13125551235}', uncheckable='uncheckable') chicago
+    //   label.btn.btn-success(ng-model='loca', btn-radio='{area:"near elgin", num:+18475551235}', uncheckable='uncheckable') near elgin
+    //   label.btn.btn-success(ng-model='loca', btn-radio='{area:"north side", num:+16305551235}', uncheckable='uncheckable') north side
+    //   label.btn.btn-success(ng-model='loca', btn-radio='{area:"new jersey", num:+13315551235}', uncheckable='uncheckable') new jersey
+    // pre {{loca}}
+    
+    // h3 upload files
+    

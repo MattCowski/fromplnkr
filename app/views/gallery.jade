@@ -1,0 +1,46 @@
+
+.row
+  .col-xs-6.col-md-3
+    a.thumbnail(href="")
+      img(src="http://placekitten.com/200")
+  .col-xs-6.col-md-3
+    a.thumbnail(href="")
+      img(src="http://placekitten.com/300")
+
+// =============================================================================================================================
+.row(ng-controller="CarouselDemoCtrl")
+  .col-sm-6.col-md-4(ng-repeat="slide in slides")
+    .thumbnail
+      img(ng-src='{{slide.image}}', alt='...')
+      .caption
+        h3 Thumbnail label
+        p ...
+        p
+          a.btn.btn-primary(href='#', role='button') Button
+          a.btn.btn-default(href='#', role='button') Button
+  
+hr
+div(ng-controller='CarouselDemoCtrl')
+  h2 CarouselDemoCtrl
+  div(style='height: 305px;')
+    carousel(interval='myInterval')
+      slide(ng-repeat='slide in slides', active='slide.active')
+        img(ng-src='{{slide.image}}', style='margin: auto;')
+        .carousel-caption
+          h4 Slide {{$index}}
+          p {{slide.text}}
+  .row
+    .col-md-6
+      a.btn.btn-info(ng-click='addSlide()') Add Slide
+    .col-md-6
+      | Interval, in milliseconds:
+      input.form-control(type='number', ng-model='myInterval')
+      br
+      | Enter a negative number to stop the interval.
+// =============================================================================================================================
+hr
+div(ng-controller='ModalDemoCtrl')
+  h2 ModalDemoCtrl
+  button.btn.btn-default(ng-click='open()') Open me!
+  div(ng-show='selected') Selection from a modal: {{ selected }}
+

@@ -1,0 +1,25 @@
+div(ng-controller="editableCtrl")
+  // div(contenteditable='true', ng-model='content.one', title='Click to edit') Some
+  // div(contenteditable='true', ng-model='content.foo', title='Click to edit') Some
+  table.table
+    tr
+      th item
+      th desc
+      th unit cost
+      th quantity
+      th price
+    tr(ng-repeat="content in contents")
+      td(contenteditable='true', ng-model='content.item', title='Click to edit')
+      td(contenteditable='true', ng-model='content.desc', title='Click to edit')
+      td(contenteditable='true', ng-model='content.unitcost', title='Click to edit') 20
+      td(contenteditable='true', ng-model='content.quantity', title='Click to edit') 2
+      td(contenteditable='true', ng-model='content.price', title='Click to edit') {{content.unitcost * content.quantity}}
+    // tr(ng-repeat="content in contents")
+    //   td(ng-bind='content.item', title='Click to edit')
+    //   td(ng-model='content.desc', title='Click to edit')
+    //   td(ng-model='content.unitcost', title='Click to edit') 20
+    //   td(ng-model='content.quantity', title='Click to edit') 2
+    //   td(ng-model='content.price', title='Click to edit') {{content.unitcost * content.quantity}}
+  pre  {{contents|json}}      
+// http://css-tricks.com/examples/EditableInvoice/
+// TODO: subtotal, total, address, 

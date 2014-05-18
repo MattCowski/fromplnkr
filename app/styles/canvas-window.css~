@@ -1,0 +1,178 @@
+﻿.canvas-window {
+	position:absolute;
+	z-index:5000;
+	border: 1px solid #ccc;
+	box-shadow: rgba(0,0,0,0.2) 0 2px 6px;
+	background: white;
+	overflow:hidden;
+}
+.hidden {
+	display:none;
+}
+.canvas-window .window-head {
+	height:36px;
+	line-height:36px;
+	background: black;
+	color:white;
+	font-size:13px;
+	padding-left:12px;
+	padding-right:12px;
+}
+.canvas-window .window-head .winow-title {
+	float:left;
+}
+.canvas-window .window-head .icon{
+	margin-top:6px;
+	background-image:url(../images/sprite.png);
+	width:24px;
+	height:24px;
+	float:right;
+	cursor:pointer;	
+}
+.canvas-window .window-head .icon:hover{
+	background-color:#737373;
+}
+.canvas-window .window-head .icon-close{
+	background-position:0 -373px;
+}
+.canvas-window .window-head .icon-full {
+	background-image:url(../images/expand_window.png);
+}
+.canvas-window .window-head .icon-normal {
+	background-image:url(../images/collapse_window.png);
+}
+.canvas-window .window-head .icon-expand {
+	background-position:0 -149px;
+}
+.canvas-window .window-head .icon-collapse {
+	background-position:0 -301px;
+}
+.canvas-window .window-body  {
+    padding:10px;
+}
+.canvas-window .window-body .thumb-bar{
+
+}
+.canvas-window .window-body .right-thumb-bar{
+
+}
+.canvas-window .window-body .img-wrapper{
+    width:80px;
+    height:80px;
+    margin-right:10px;
+    position:relative;
+    border:1px solid silver;
+    display:inline-block;
+}
+.canvas-window .window-body .img-wrapper img{
+    max-width:100%;
+    max-height:100%;
+    margin:auto;
+    text-align:center;
+}
+.canvas-window .window-body  canvas{
+    border:1px solid gray;
+    width:100%;
+}
+
+.canvas-window.mini-mode {
+	width: 260px;
+	right:20px;
+	bottom:0;
+}
+.canvas-window.mini-mode .window-head {
+	
+}
+.canvas-window.mini-mode .window-head .icon-full {
+	display:block;
+}
+.canvas-window.mini-mode .window-head .icon-normal {
+	display:none;
+}
+.canvas-window.mini-mode .window-head .icon-expand {
+	display:none;
+}
+.canvas-window.mini-mode .window-head .icon-collapse {
+	display:none;
+}
+.canvas-window.mini-mode .window-body {
+	display: none;
+}
+
+.canvas-window.normal-mode {
+	width: 800px;
+	right:20px;
+	bottom:0;	
+}
+.canvas-window.normal-mode .window-head {
+
+}
+.canvas-window.normal-mode .window-head .icon-full {
+	display:block;
+}
+.canvas-window.normal-mode .window-head .icon-normal {
+	display:none;
+}
+.canvas-window.normal-mode .window-head .icon-expand {
+	display:none;
+}
+.canvas-window.normal-mode .window-head .icon-collapse {
+	display:block;
+}
+.canvas-window.normal-mode .window-body {
+	display: block;
+	height:550px;
+}
+
+.canvas-window.full-mode {
+	left:150px;
+	top:40px;	
+	width: -webkit-calc(100% - 300px);
+	width: -moz-calc(100% - 300px);
+	width:calc(100%-300px);
+	height: -webkit-calc(100% - 80px);
+	height: -moz-calc(100% - 80px);
+	height:calc(100%-80px);
+}
+.canvas-window.full-mode .window-head {
+
+}
+.canvas-window.full-mode .window-head .icon-full {
+	display:none;
+}
+.canvas-window.full-mode .window-head .icon-normal {
+	display:block;
+}
+.canvas-window.full-mode .window-head .icon-expand {
+	display:none;
+}
+.canvas-window.full-mode .window-head .icon-collapse {
+	display:block;
+}
+.canvas-window.full-mode .window-body {
+	display: block;
+	height:600px;
+}
+
+.canvas-window-shadow {
+   width:100%;
+   height:100%;
+   position:absolute;
+   left:0;
+   top:0;
+   z-index:4999;
+   background:rgba(0,0,0,0.5);
+}
+
+.canvas-window .toggle-btn {
+   background:gray;
+   color:white;
+   width:32px;
+   height:32px;
+   text-align:center;
+   line-height:32px;
+   cursor:pointer;
+}
+.canvas-window .toggle-btn.selected {
+   background:black;
+}

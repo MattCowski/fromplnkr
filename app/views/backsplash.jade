@@ -1,0 +1,138 @@
+// TODO rename controller names
+.row
+  .col-xs-4
+  .col-xs-4
+    
+      // TODO total not update, why?
+      // TODO show differently for mobile
+      // TODO angular-strap affix and scrollfix for:
+  .col-xs-4(ng-controller="Controller")
+    .panel.panel-default
+      .panel-heading Calculated Total Price 
+        b ${{total()}}
+      table.table.table-condensed.table-responsive
+        tr
+          th item
+          th price
+          th quantity
+          th total
+          th 
+        // TODO ng-hide?
+        tr(ng-repeat="(key, item) in items", ng-hide="item.quantity === 0")
+          td {{key}} 
+          td {{item.price}} 
+          td {{item.quantity}}
+          td {{item.total}}
+          td
+            a.close(ng-click="item.quantity=0")&times;
+    .row
+      // TODO % of options configured
+      progressbar.progress-striped.active(max='100', value='15', type='primary')
+        i 15%
+h1 Backsplash
+.row
+  ol.breadcrumb
+    // TODO should be dynamic?
+    // TODO should only show if last page visted was home / kitchen
+    li: a(href="#") Home
+    li: a(href="#/kitchen") Kitchen
+    li.active Backsplash
+    
+.row
+    
+  div(ng-controller='TabsDemoCtrl')
+    tabset
+      tab(active='tabs[0].active', heading='Dimensions')
+        div(ng-controller='Controller')
+          form.css-form(name='form', novalidate='novalidate')
+            img(src="http://placehold.it/350x100&text=showsHowToMeasure")
+            div.form-group
+              label SF:
+              input.form-control(type='number', ng-model='sf', ng-change="change()", name='sf', min='0', max='80', integer='integer')
+              
+            
+        
+        button.btn.btn-success.btn-sm(ng-click='tabs[1].active = true') Continue
+      // -------------------------
+      tab(active='tabs[1].active', heading='Options')
+        div(ng-controller='Controller')
+          div.form-group
+            img(src="http://placehold.it/350x100&text=inserts")
+            label How many inserts?
+            input.form-control(ng-model='items.inserts.quantity')
+            | x $4 = {{ items.inserts.quantity * 4 }}
+            
+          
+          img(src="http://placehold.it/350x100&text=nicepicWithOptionDemoed")
+          button.form-control.btn.btn-primary(type='button', ng-model='items.caulking.quantity', btn-checkbox='btn-checkbox', btn-checkbox-true='1', btn-checkbox-false='0')
+            | {{items.caulking.quantity === 0 ? 'Add':'Remove'}} Caulking 
+          img(src="http://placehold.it/350x100&text=nicepicWithOptionDemoed")
+          button.form-control.btn.btn-primary(type='button', ng-model='items.frame.quantity', btn-checkbox='btn-checkbox', btn-checkbox-true='1', btn-checkbox-false='0')
+            | {{items.frame.quantity === 0 ? 'Add':'Remove'}} Picture Frame
+      
+          h3 Sealer
+          img(src="http://placehold.it/350x100&text=nicepicWithOptionDemoed")
+          p ..
+          .btn-group.btn-block
+            label.btn.btn-primary(ng-model='items["sealer"]', btn-radio='{desc:"1 coat", price:2, quantity:sf}', uncheckable='uncheckable') 1 coat
+            label.btn.btn-primary(ng-model='items["sealer"]', btn-radio='{desc:"2 coats", price:4, quantity:sf}', uncheckable='uncheckable') 2 coats
+            label.btn.btn-primary(ng-model='items["sealer"]', btn-radio='{desc:"glossy finish", price:4, quantity:sf}', uncheckable='uncheckable') glossy finish
+            
+          h3 Tile
+          img(src="http://placehold.it/350x100&text=nicepicWithOptionDemoed")
+          p ...
+          .btn-group
+            button.btn.btn-primary(type='button', ng-model='items.tile', btn-radio='{desc:"travertine", price:2, quantity:sf}') travertine
+            button.btn.btn-primary(type='button', ng-model='items.tile', btn-radio='{desc:"glass", price:4, quantity:sf}') glass
+            button.btn.btn-primary(type='button', ng-model='items.tile', btn-radio='{desc:"ceramic", price:0, quantity:sf}') ceramic
+        
+        
+        
+        
+        
+        button.btn.btn-success.btn-sm(ng-click='tabs[2].active = true') Continue
+      // -------------------------
+      tab(active='tabs[2].active', heading='Location')
+        div(ng-controller='TypeaheadCtrl')
+        h4 Travel charge:
+        // TODO join to total calculation
+        small ${{price}}
+        pre.
+          Address: {{asyncSelected | json}} 
+        input.form-control(type='text', ng-model='asyncSelected', placeholder='your address', typeahead='address for address in getLocation($viewValue)', typeahead-loading='loadingLocations')
+          i.glyphicon.glyphicon-refresh(ng-show='loadingLocations')
+          pre.
+            \nDistances: {{distances |json}}          
+          button(ng-click='getDistance()') Calculate distance
+        button.btn.btn-success.btn-sm(ng-click='tabs[3].active = true') Continue
+      
+      // -------------------------
+      tab(active='tabs[3].active', heading='Date')
+        h4 Schedule date for installation
+        // TODO join to total calculation
+        // TODO controller: the greater # of days away, the greater the discount. e.g. 1 month away == 10% off (max 30% off)
+        div(ng-controller='DatepickerDemoCtrl', style='display:inline-block; min-height:290px;')
+          datepicker.well.well-sm(ng-model='dt', min-date='minDate', date-disabled='disabled(date, mode)', show-weeks='true')
+        p We will arrive to start the job on {{dt| date:'fullDate'}}
+        p Selected date is: {{parsedDate()}}
+        hr
+        div(ng-controller='TimepickerDemoCtrl')
+          timepicker(ng-model='mytime', ng-change='changed()', hour-step='hstep', minute-step='mstep', show-meridian='ismeridian')
+          pre.alert.alert-info.
+            \nWe will arrive at: {{mytime | date:'shortTime' }} 
+        button.btn.btn-success.btn-sm(ng-click='tabs[4].active = true') Continue
+      // -------------------------
+      tab(active='tabs[4].active', heading='Contact info')
+        // TODO name, email, phone
+        // TODO make functional: send using nodemailer
+        // TODO register user
+        // TODO every form persists to firebase even if not submitted
+        // 
+        
+        button.btn.btn-success.btn-sm(ng-click='tabs[5].active = true') Submit
+        // TODO dissables or hides entire form (?) to prevent duplicates
+
+    br
+    br
+    br
+    // todo: padding

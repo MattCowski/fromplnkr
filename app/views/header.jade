@@ -1,0 +1,87 @@
+// TODO navbar collapse when mobile: change jquery to angular code?
+nav.navbar.navbar-default.hidden-print(role='navigation' ng-controller="NavCtrl")
+  // http://stackoverflow.com/questions/16199418/how-do-i-implement-the-bootstrap-navbar-active-class-with-angular-js
+  
+  .navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#top-navbar-collapse')
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand(href='#') KrisTile
+    
+  .collapse.navbar-collapse#top-navbar-collapse
+    ul.nav.navbar-nav(ng-show="loggedinAdmin")
+      li
+        a(href="#/admin")
+          span.glyphicon.glyphicon-paperclip
+          |  Admin 
+      li
+        a(href="")
+          span.glyphicon.glyphicon-calendar
+          |  Calendar 
+      li
+        a(href="")
+          span.glyphicon.glyphicon-picture
+          |  Images 
+      li
+        a(href="")
+          span.glyphicon.glyphicon-envelope
+          |  Messages 
+          // TODO make label ng-model
+          span.label.label-danger 1
+          
+          
+          
+    ul.nav.navbar-nav(ng-show="loggedin")
+      li
+        a(href="")
+          span.glyphicon.glyphicon-paperclip
+          |  Documents 
+      li
+        a(href="")
+          span.glyphicon.glyphicon-calendar
+          |  Calendar 
+      li
+        a(href="")
+          span.glyphicon.glyphicon-shopping-cart
+          |  Order 
+      li
+        a(href="")
+          span.glyphicon.glyphicon-search
+          |  Search
+      li
+        a(href="")
+          span.glyphicon.glyphicon-picture
+          |  Images 
+      li
+        a(href="")
+          span.glyphicon.glyphicon-certificate
+          |  Legal 
+      li
+        a(href="")
+          span.glyphicon.glyphicon-envelope
+          |  Messages 
+          span.label.label-danger 1
+      li
+        a(href="")
+          span.glyphicon.glyphicon-star
+          |  Review 
+            
+    ul.nav.navbar-nav.navbar-right
+      li.dropdown
+        // TODO: make real login
+        // TODO: fix: need to click 2 times
+        a.dropdown-toggle(data-toggle="dropdown", href="#") login
+          b.caret
+        ul.dropdown-menu
+          li
+            a(href="", ng-click="loggedin = !loggedin") as user
+          li
+            a(href="", ng-click="loggedinAdmin = !loggedinAdmin") as admin
+          li.divider
+          li
+            a(href="") foo
+    
+      
+      

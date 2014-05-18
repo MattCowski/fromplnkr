@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="fromplnkr">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+
+<script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script data-require="bootstrap@*" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+
+</head>
+<body>
+  <div ng-include="'header.html'"></div>
+  <div class="container-fluid" ng-view ></div>
+  <div ng-include="'footer.html'"></div>
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/directives/Integer.js"></script>
+  <script src="scripts/directives/SmartFloat.js"></script>
+  <script src="scripts/directives/ContentEditable.js"></script>
+  <script src="scripts/directives/Draggable.js"></script>
+
+  <script src="scripts/services/CurrencyConverter.js"></script>
+  <script src="scripts/services/Uploads.js"></script>
+
+  <script src="scripts/filters/Reverse.js"></script>
+
+  <script src="scripts/controllers/AdminCtrl.js"></script>
+  <script src="scripts/controllers/Ctrl.js"></script>
+  <script src="scripts/controllers/DropdownCtrl.js"></script>
+  <script src="scripts/controllers/EditableCtrl.js"></script>
+  <script src="scripts/controllers/InvoiceCtrl.js"></script>
+  <script src="scripts/controllers/InvoiceCtrl2.js"></script>
+  <script src="scripts/controllers/NavCtrl.js"></script>
+  <script src="scripts/controllers/SpicyCtrl.js"></script>
+</body>
+</html>

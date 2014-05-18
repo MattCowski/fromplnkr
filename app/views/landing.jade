@@ -1,0 +1,55 @@
+
+.row(ng-controller="CarouselDemoCtrl")
+  .col-xs-12.col-sm-6.col-md-4.col-lg-3(ng-repeat="slide in slides")
+    img.img-responsive.img-rounded(ng-src='{{slide.image}}')
+    .row
+      // TODO get quote and rating, etc from model
+      blockquote.blockquote-reverse
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+        footer
+          rating(ng-model='rate', max='5', readonly='true')
+          |John Smith from
+          cite(title="reddit.com") Reddit
+      span $440 for 18 sf and a border
+      button.btn.btn-danger(ng-click="")
+        span.glyphicon.glyphicon-eye-close
+        |  hide
+      // TODO prepopulates calculator:
+      button.btn.btn-success(ng-click="")
+        span.glyphicon.glyphicon-wrench
+        |  edit dimensions & price
+      // TODO saves for user favorites
+      button.btn.btn-warning(ng-click="")
+        span.glyphicon.glyphicon-heart
+        |  save
+      // TODO open modal / page lightbox with arrows
+      button.btn.btn-default(ng-click="")
+        span.glyphicon.glyphicon-film
+        |  view project gallery
+.row
+  // TODO fix
+  div(ng-controller='PaginationDemoCtrl')
+    
+      // pagination(total-items='totalItems', ng-model='currentPage', ng-change='pageChanged()')
+      pagination(boundary-links='true', total-items='totalItems', ng-model='currentPage', previous-text='‹', next-text='›', first-text='«', last-text='»')
+      
+      pager(total-items='totalItems', ng-model='currentPage')
+
+  
+
+.row
+  div(ng-controller='ModalDemoCtrl')
+    button.btn.btn-default(ng-click='open()') See Google Maps Reviews
+    button.btn.btn-default(ng-click='open(\'lg\')') See Yelp Reviews
+
+    
+    
+.row
+  h4 Installation crew
+  p
+    span.glyphicon.glyphicon-user 
+    |  Bob has 10 years of experience etc
+  span.glyphicon.glyphicon-user 
+  |  Joe is the best cutter and a funny guy
+  
+

@@ -1,0 +1,52 @@
+nav.navbar.navbar-fixed-bottom.navbar-inverse.hidden-print(role='navigation')
+  .navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#nav-collapse-bottom')
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand(href='#') KrisTile
+  
+  .collapse.navbar-collapse#nav-collapse-bottom
+    
+    .btn-group.navbar-btn.dropup(dropdown,ng-controller="DropdownCtrl")
+      button.btn.btn-success(popover="(847) 555 1234")
+        span.glyphicon.glyphicon-earphone
+        |  Call
+      button.btn.btn-success.dropdown-toggle(type="button", on-toggle)
+        span.glyphicon.glyphicon-comment
+        |  Chat
+      // p.dropdown-menu hello
+      .panel.panel-default.dropdown-menu
+        .panel-heading Chat with Bob
+        ul.media-list
+          li.media
+            a(href="#").pull-left
+              img.media-object(src="http://placekitten.com/32", alt="")
+            .media-body
+              h4.media-heading Bob
+              p Hey how can i help?
+          li.media
+            a(href="#").pull-right
+              img.media-object(src="http://placekitten.com/32", alt="")
+            .media-body
+              h4.media-heading You
+              p lorem ipsum
+      // ul.dropdown-menu(role="menu")
+      //   li
+      //     a(href="") test
+    
+        
+        
+    ul.nav.navbar-nav.navbar-right
+      li
+        a(href='#/home') home
+      li
+        a(href='#/landing') landing
+      li
+        a(href='#/faq') faq
+      li
+        a(href='#/gallery') gallery
+      li
+        a(href='#/contact') contact
+

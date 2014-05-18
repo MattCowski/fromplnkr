@@ -1,0 +1,228 @@
+h1 Your contact info
+div(ng-controller='Ctrl')
+  input(ng-model='greeting', type='greeting')
+  br
+  | Your name: {{greeting}}
+  // br
+  // | Reverse: {{greeting|reverse}}
+  // br
+  // | Reverse + uppercase: {{greeting|reverse:true}}
+  // br
+
+div(ng-controller='Controller')
+  form.css-form(novalidate='novalidate')
+    | Name:
+    input(type='text', ng-model='user.name')
+    br
+    | E-mail:
+    input(type='email', ng-model='user.email')
+    br
+    | Gender:
+    input(type='radio', ng-model='user.gender', value='male')
+    | male
+    input(type='radio', ng-model='user.gender', value='female')
+    | female
+    br
+    button(ng-click='reset()') RESET
+    button(ng-click='update(user)') SAVE
+  pre.
+    form = {{user | json}}        
+  pre.
+    master = {{master | json}}        
+
+  style(type='text/css')
+    .css-form input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+    }
+    .css-form input.ng-valid.ng-dirty {
+    background-color: #78FA89;
+    }
+    
+div(ng-controller='Controller')
+  form.css-form(name='form', novalidate='novalidate')
+    | Name:
+    input(type='text', ng-model='user.name', name='uName', required='required')
+    br
+    | E-mail:
+    input(type='email', ng-model='user.email', name='uEmail', required='required')
+    br
+    div(ng-show='form.uEmail.$dirty && form.uEmail.$invalid')
+      | Invalid:
+      span(ng-show='form.uEmail.$error.required') Tell us your email.
+      span(ng-show='form.uEmail.$error.email') This is not a valid email.
+    | Gender:
+    input(type='radio', ng-model='user.gender', value='male')
+    | male
+    input(type='radio', ng-model='user.gender', value='female')
+    | female
+    br
+    input(type='checkbox', ng-model='user.agree', name='userAgree', required='required')
+    | I agree:
+    input(ng-show='user.agree', type='text', ng-model='user.agreeSign', required='required')
+    br
+    div(ng-show='!user.agree || !user.agreeSign') Please agree and sign.
+    button(ng-click='reset()', ng-disabled='isUnchanged(user)') RESET
+    button(ng-click='update(user)', ng-disabled='form.$invalid || isUnchanged(user)') SAVE
+
+h1 Project info
+h1 Schedule appt
+hr
+div(ng-controller='InvoiceController as invoice')
+  b Invoice:
+  div
+    | Quantity:
+    input(type='number', ng-model='invoice.qty', required='required')
+  div
+    | Costs:
+    input(type='number', ng-model='invoice.cost', required='required')
+    select(ng-model='invoice.inCurr')
+      option(ng-repeat='c in invoice.currencies') {{c}}
+  div
+    b Total:
+    span(ng-repeat='c in invoice.currencies')
+      | {{invoice.total(c) | currency:c}}
+    button.btn(ng-click='invoice.pay()') Pay
+hr
+
+
+div(ng-app='spicyApp1', ng-controller='SpicyCtrl')
+  button(ng-click='chiliSpicy()') Stone
+  button(ng-click='jalapenoSpicy()') Glass
+  p You have selected {{spice}}!
+hr
+div(ng-app='spicyApp2', ng-controller='SpicyCtrl2')
+  input(ng-model='customSpice')
+  button(ng-click='spicy("stone")') Chili
+  button(ng-click='spicy(customSpice)') Custom spice
+  p The food is {{spice}} spicy!
+  
+  
+        
+div(contenteditable='true', ng-model='content1', title='Click to edit') Some
+div(contenteditable='true', ng-model='content', title='Click to edit') Some
+pre.
+  model = {{content}}      
+style(type='text/css')
+  div[contentEditable] {
+  cursor: pointer;
+  background-color: #fff;
+  }
+
+
+
+// =============================================================================================================================
+hr
+div(ng-controller='ProgressDemoCtrl')
+  h2 ProgressDemoCtrl
+  h3 Static
+  .row
+    .col-sm-4
+      progressbar(value='55')
+    .col-sm-4
+      progressbar.progress-striped(value='22', type='warning') 22%
+    .col-sm-4
+      progressbar.progress-striped.active(max='200', value='166', type='success')
+        i 166 / 200
+  hr
+  h3
+    | Dynamic
+    button.btn.btn-sm.btn-primary(type='button', ng-click='random()') Randomize
+  progressbar(max='max', value='dynamic')
+    span(style='color: black; white-space: nowrap;') {{dynamic}} / {{max}}
+  small
+    em No animation
+  progressbar(animate='false', value='dynamic', type='success')
+    b {{dynamic}}%
+  small
+    em Object (changes type based on value)
+  progressbar.progress-striped.active(value='dynamic', type='{{type}}')
+    | {{type}}
+    i(ng-show='showWarning') !!! Watch out !!!
+  hr
+  h3
+    | Stacked
+    button.btn.btn-sm.btn-primary(type='button', ng-click='randomStacked()') Randomize
+  progress
+    bar(ng-repeat='bar in stacked', value='bar.value', type='{{bar.type}}')
+      span(ng-hide='ng-hide', bar.value='bar.value')
+// =============================================================================================================================
+hr
+div(ng-controller='TimepickerDemoCtrl')
+  h2 TimepickerDemoCtrl
+  div(ng-model='mytime', ng-change='changed()', style='display: inline-block;')
+    timepicker(hour-step='hstep', minute-step='mstep', show-meridian='ismeridian')
+  pre.alert.alert-info.
+    \nTime is: {{mytime | date:'shortTime' }}        
+  .row
+    .col-xs-6
+      | Hours step is:
+      select.form-control(ng-model='hstep', ng-options='opt for opt in options.hstep')
+    .col-xs-6
+      | Minutes step is:
+      select.form-control(ng-model='mstep', ng-options='opt for opt in options.mstep')
+  hr
+  button.btn.btn-info(ng-click='toggleMode()') 12H / 24H
+  button.btn.btn-default(ng-click='update()') Set to 14:00
+  button.btn.btn-danger(ng-click='clear()') Clear
+// =============================================================================================================================
+hr
+div(ng-controller='RatingDemoCtrl')
+  h2 RatingDemoCtrl
+  h4 Default
+  rating(value='rate', max='max', readonly='isReadonly', on-hover='hoveringOver(value)', on-leave='overStar = null')
+  span.label(ng-class='ng-class', label-warning='label-warning', :=':', percent='percent')
+  pre(style='margin: 15px 0;').
+    \nRate:          - Readonly is:          - Hovering over:         
+  button.btn.btn-sm.btn-danger(ng-click='rate = 0', ng-disabled='isReadonly') Clear
+  button.btn.btn-sm.btn-default(ng-click='isReadonly = ! isReadonly') Toggle Readonly
+  hr
+  h4 Custom icons
+  div(ng-init='x = 5')
+    rating(value='x', max='15', state-on='\'glyphicon-ok-sign\'', state-off='\'glyphicon-ok-circle\'')
+    b
+      | (
+      i Rate:
+      | {{x}})
+  div(ng-init='y = 2')
+    rating(value='y', rating-states='ratingStates')
+    b
+      | (
+      i Rate:
+      | {{y}})
+
+// =============================================================================================================================
+hr
+div(ng-controller='AlertDemoCtrl')
+  h2 AlertDemoCtrl
+  alert(ng-repeat='alert in alerts', type='alert.type', close='closeAlert($index)') {{alert.msg}}
+  button.btn.btn-default(ng-click='addAlert()') Add Alert
+// =============================================================================================================================
+hr
+div(ng-controller='DatepickerDemoCtrl')
+  h2 DatepickerDemoCtrl
+  pre.
+    \nSelected date is:         
+  h4 Inline
+  div(style='display: inline-block; min-height: 290px;')
+    .well.well-sm(ng-model='dt')
+      datepicker(min='minDate', show-weeks='showWeeks')
+  h4 Popup
+  .row
+    .col-md-6
+      p.input-group
+        input.form-control(type='text', datepicker-popup='{{format}}', ng-model='dt', is-open='opened', min='minDate', max='\'2015-06-22\'', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', ng-required='true', close-text='Close')
+        span.input-group-btn
+          button.btn.btn-default(ng-click='open($event)')
+            i.glyphicon.glyphicon-calendar
+  .row
+    .col-md-6
+      label Format:
+      select.form-control(ng-model='format', ng-options='f for f in formats')
+        option
+  hr
+  button.btn.btn-sm.btn-info(ng-click='today()') Today
+  button.btn.btn-sm.btn-default(ng-click='dt = \'2009-08-24\'') 2009-08-24
+  button.btn.btn-sm.btn-success(ng-click='toggleWeeks()', tooltip='For inline datepicker') Toggle Weeks
+  button.btn.btn-sm.btn-danger(ng-click='clear()') Clear
+  button.btn.btn-sm.btn-default(ng-click='toggleMin()', tooltip='After today restriction') Min date
+

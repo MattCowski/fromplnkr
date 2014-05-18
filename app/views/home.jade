@@ -1,0 +1,131 @@
+.row
+  .col-xs-12
+    img.img-responsive.center-block(width="200",src="http://transloaditkts.s3.amazonaws.com/19/6d2690dc8d11e39fdaa309f8ca44f9/990ffa3c8da7e4be32994bdd13d5e228")
+.row
+  .col-xs-12
+    h1.text-center KrisTile
+      br
+      small Providing installation services for over 20 years.
+.row
+  .col-xs-2
+  .col-xs-8
+    // nav.hidden-print.navbar.navbar-default(role="navigation")
+    //   // http://stackoverflow.com/questions/14601425/bootstrap-navbar-justify-span-menu-items-occupying-full-width
+    //   .navbar-header
+    ul.nav.nav-pills.nav-justified
+      li
+        a(href='#/kitchen') Kitchen
+      li
+        a(href='#/bathroom') Bathroom
+      li
+        a(href='#/fireplace') Fireplace
+      li
+        a(href='#/backsplash') Backsplash
+      li
+        a(href='#/outdoor') Outdoor
+      li
+        a(href='#/commercial') Commercial
+      // li
+      //   a(href='#/landing') landing
+      // li
+      //   a(href='#/faq') faq
+      // li
+      //   a(href='#/gallery') gallery
+      // li
+      //   a(href='#/contact') contact
+.row
+  img.img-responsive(src="http://placekitten.com/1600/300")
+.row
+  blockquote.blockquote-reverse
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+    footer Someone from
+      cite(title="reddit.com") Reddit
+.row
+  img.img-responsive(src="http://placekitten.com/1600/301")
+.row
+  blockquote
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+    footer Someone from
+      cite(title="reddit.com") Reddit
+  
+// .row
+//   .col-xs-4.page-header
+//     h2 Experience
+//       small   Founded in '92. Together, at KrisTile, we combine skills, techniques, and use the newest, safest tools to provide top notch services.
+    
+//   .col-xs-4
+//     button.btn.btn-lg.btn-primary.center-block.visible-xs (847) 555 0194
+//   .col-xs-4
+//     .btn-group.pull-right
+//       button.btn.btn-success
+//         span.glyphicon.glyphicon-earphone
+//         |  Call
+//       button.btn.btn-success
+//         span.glyphicon.glyphicon-comment
+//         |  Chat
+        
+
+.row.page-header
+  .col-md-6
+    .row
+      .col-xs-6
+        img.img-circle(src="http://placekitten.com/200")
+        h3 Experience
+          small   Founded in '92.
+        p Together, at KrisTile, we combine skills, techniques, and use the newest, safest tools to provide top notch services.
+      .col-xs-6
+        img.img-circle(src="http://placekitten.com/200")
+        h3 Licensed
+          small   Founded in '92.
+        p Together, at KrisTile, we combine skills, techniques, and use the newest, safest tools to provide top notch services.
+        
+  .col-md-6
+    .row
+      .col-xs-6
+        img.img-circle(src="http://placekitten.com/200")
+        h3 Quality
+          small   Founded in '92.
+        p Together, at KrisTile, we combine skills, techniques, and use the newest, safest tools to provide top notch services.
+      .col-xs-6
+        img.img-circle(src="http://placekitten.com/200")
+        h3 On time 
+          small   Founded in '92.
+        p Together, at KrisTile, we combine skills, techniques, and use the newest, safest tools to provide top notch services.
+            
+.row.page-header
+  button.btn.btn-lg.btn-primary Calculate price
+  button.btn.btn-lg.btn-primary Calculate online quote
+  button.btn.btn-lg.btn-primary Get a quote
+  button.btn.btn-lg.btn-primary Calculate price online
+  p.lead Together, at KrisTile, we combine skills, techniques, and use the newest, safest tools to provide top notch services.
+  button.btn.btn-lg.btn-primary Upload Pictures
+        
+.row
+  .col-xs-3
+    .panel.panel-default
+      .panel-heading this is heading
+      .panel-body body here
+.row
+  .col-xs-6
+    .well
+      | body here 
+    
+  
+.row.nostacking
+  .col-xs-6.col-md-4.bg-primary
+    p foo
+  .col-xs-6.col-md-4.bg-warning
+    p bar
+      // img.img-responsive(src="https://mail.google.com/mail/u/0/?ui=2&ik=e2b5386fbe&view=fimg&th=145d9d73acc0ef40&attid=0.7&disp=inline&realattid=f_huxhj62q6&safe=1&attbid=ANGjdJ_LLygSRUK4TLTETecND_mwaGP8jB6RRf95TWv2qgzmL3CE9i8AvNOrqc-qOH2aNvEsR1QVeDymM_Hud28vcdU7R--YQALC5srSLHV1rnbAJn1PNqjrAbWfaO4&ats=1399546502060&rm=145d9d73acc0ef40&zw&sz=w1808-h835")
+  .col-xs-6.col-md-4.bg-danger
+    p baz
+
+
+hr
+div(ng-controller='CollapseDemoCtrl')
+  
+  button.btn.btn-default(ng-click='isCollapsed = !isCollapsed') Add Picture Frame
+  
+  div(collapse='isCollapsed')
+    .well.well-lg Some content
+
