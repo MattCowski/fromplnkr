@@ -1,30 +1,29 @@
 # TODO route: admin/calendar
 @fromplnkr = angular.module("fromplnkr", [
   "ui.bootstrap",
-    'ngRoute',
-    'financeServices'
+    'ngRoute'
 ])
 @fromplnkr.config ($routeProvider, $locationProvider, $httpProvider) ->
   $routeProvider
     .when "/landing",
-      templateUrl: "landing.html"
+      templateUrl: "views/landing.html"
     .when "/kitchen",
-      templateUrl: "kitchen.html"
+      templateUrl: "views/kitchen.html"
     .when "/backsplash",
-      templateUrl: "backsplash.html"
+      templateUrl: "views/backsplash.html"
     .when "/contact",
-      templateUrl: "contact.html"
+      templateUrl: "views/contact.html"
     .when "/faq",
-      templateUrl: "faq.html"
+      templateUrl: "views/faq.html"
     .when "/home",
-      templateUrl: "home.html"
+      templateUrl: "views/home.html"
     .when "/gallery",
-      templateUrl: "gallery.html"
+      templateUrl: "views/gallery.html"
     .when "/invoice",
-      templateUrl: "invoice.html"
+      templateUrl: "views/invoice.html"
     .when "/admin",
-      templateUrl: "admin.html"
+      templateUrl: "views/admin.html"
     .when "/chat",
-      templateUrl: "chat.html"
+      templateUrl: "views/chat.html"
     .otherwise
       redirectTo: "/admin"

@@ -30,6 +30,10 @@ module.exports = function (grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
+      jade: {
+        files: ['<%= yeoman.app %>/{,*/}*.jade'],
+        tasks: ['jade']
+      },
       bower: {
         files: ['bower.json'],
         tasks: ['bowerInstall']
@@ -37,10 +41,6 @@ module.exports = function (grunt) {
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:dist']
-      },
-      jade: {
-        files: ['<%= yeoman.app %>/views/{,*/}*.jade'],
-        tasks: ['newer:jade:dist']
       },
       coffeeTest: {
         files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
@@ -58,12 +58,13 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
+          '.tmp/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '.tmp/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
+
     },
 
     // The actual grunt server settings
@@ -146,6 +147,22 @@ module.exports = function (grunt) {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
         ignorePath: '<%= yeoman.app %>/'
+      }
+    },
+
+    //Compiles jade to html
+    jade: {
+      dist: {
+	options: {
+	    pretty: true
+	},
+	files: [{
+	    expand: true,
+	    cwd: '<%= yeoman.app %>',
+	    dest: '.tmp',
+	    src: '{,*/}*.jade',
+	    ext: '.html'
+	}]
       }
     },
 
@@ -378,6 +395,7 @@ module.exports = function (grunt) {
       'clean:server',
       'bowerInstall',
       'concurrent:server',
+      'jade',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -408,6 +426,7 @@ module.exports = function (grunt) {
     'copy:dist',
     'cdnify',
     'cssmin',
+    'jade',
     //'uglify',
     'rev',
     'usemin',

@@ -1,5 +1,9 @@
 "use strict"
-fromplnkr.controller "AdminCtrl", ($scope) ->
+fromplnkr.controller "adminCtrl", ($scope) ->
+  $scope.dateOptions =
+    'year-format': "'yy'",
+    'starting-day': 1
+
   $scope.dateDisabled = (date, mode)->
     if $scope.availability == 'busy'
       return true

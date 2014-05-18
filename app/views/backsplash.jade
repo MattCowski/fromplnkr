@@ -100,10 +100,10 @@ h1 Backsplash
         pre.
           Address: {{asyncSelected | json}} 
         input.form-control(type='text', ng-model='asyncSelected', placeholder='your address', typeahead='address for address in getLocation($viewValue)', typeahead-loading='loadingLocations')
-          i.glyphicon.glyphicon-refresh(ng-show='loadingLocations')
-          pre.
-            \nDistances: {{distances |json}}          
-          button(ng-click='getDistance()') Calculate distance
+        i.glyphicon.glyphicon-refresh(ng-show='loadingLocations')
+        pre.
+          Distances: {{distances |json}}          
+        button(ng-click='getDistance()') Calculate distance
         button.btn.btn-success.btn-sm(ng-click='tabs[3].active = true') Continue
       
       // -------------------------

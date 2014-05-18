@@ -31,12 +31,11 @@ div(ng-controller='Controller')
     master = {{master | json}}        
 
   style(type='text/css')
-    .css-form input.ng-invalid.ng-dirty {
-    background-color: #FA787E;
-    }
-    .css-form input.ng-valid.ng-dirty {
-    background-color: #78FA89;
-    }
+    .css-form
+      input.ng-invalid.ng-dirty(style="background-color: #FA787E;")
+
+    .css-form 
+      input.ng-valid.ng-dirty(style="background-color: #78FA89;")
     
 div(ng-controller='Controller')
   form.css-form(name='form', novalidate='novalidate')
@@ -103,10 +102,7 @@ div(contenteditable='true', ng-model='content', title='Click to edit') Some
 pre.
   model = {{content}}      
 style(type='text/css')
-  div[contentEditable] {
-  cursor: pointer;
-  background-color: #fff;
-  }
+  div[contentEditable](style="cursor: pointer;background-color: #fff;")
 
 
 
